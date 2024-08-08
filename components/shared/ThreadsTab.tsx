@@ -9,7 +9,9 @@ interface Result {
   name: string;
   image: string;
   id: string;
+  role: string;
   threads: {
+    role: string;
     _id: string;
     text: string;
     parentId: string | null;
@@ -17,6 +19,7 @@ interface Result {
       name: string;
       image: string;
       id: string;
+      role: string;
     };
     community: {
       id: string;
@@ -57,16 +60,18 @@ async function ThreadsTab({ currentUserId, accountId, accountType }: Props) {
         <ThreadCard
           key={thread._id}
           id={thread._id}
+          role={thread.role}
           currentUserId={currentUserId}
           parentId={thread.parentId}
           content={thread.text}
           author={
             accountType === "User"
-              ? { name: result.name, image: result.image, id: result.id }
+              ? { name: result.name, image: result.image, id: result.id, role: result.role}
               : {
                   name: thread.author.name,
                   image: thread.author.image,
                   id: thread.author.id,
+                  role: thread.author.role,
                 }
           }
           community={

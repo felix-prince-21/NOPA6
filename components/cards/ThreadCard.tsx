@@ -9,9 +9,9 @@ interface Props {
   currentUserId: string;
   parentId: string | null;
   content: string;
-  //role: string;
+  role: string;
   author: {
-    //role: string;
+    role: string;
     name: string;
     image: string;
     id: string;
@@ -36,7 +36,7 @@ function ThreadCard({
   parentId,
   content,
   author,
-  //role,
+  role,
   community,
   createdAt,
   comments,
@@ -68,7 +68,9 @@ function ThreadCard({
               <h4 className='cursor-pointer text-base-semibold text-light-1'>
                 {author.name}
               </h4>
-              
+              <h5 className='cursor-pointer text-base-semibold text-light-1'>
+                {author.role}
+              </h5>
             </Link>
 
             <p className='mt-2 text-small-regular text-light-2'>{content}</p>
